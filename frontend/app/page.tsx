@@ -7,6 +7,13 @@ import Link from "next/link";
 import { SubmitEvent, useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardContent,
+  CardTitle,
+} from "@/components/ui/card";
 
 import { cn } from "@/lib/utils";
 
@@ -223,35 +230,28 @@ export default function App() {
         className="w-full overflow-hidden border-y border-[#dfe7f1] bg-brand-bg-light group"
         aria-label="Qurio key highlights"
       >
-        <div className="flex w-max animate-[qurio-marquee-scroll_34s_linear_infinite] motion-reduce:[animation-play-state:paused] group-hover:[animation-play-state:paused]">
-          <div className="flex items-center gap-7 px-7 py-[17px] whitespace-nowrap text-brand-text-dark text-base font-bold">
-            <span>⚡ Qurio: Transparansi Kemampuan Intelektual Murid</span>
-            <b className="text-sky-500 text-lg">✦</b>
+        {/* Animasi infinite */}
+        <div className="flex w-max animate-[qurio-marquee-scroll_34s_linear_infinite] motion-reduce:[animation-play-state:paused]">
+          <div className="flex items-center gap-7 px-7 py-[17px] whitespace-nowrap text-brand-text-dark text-xl font-bold">
+            <span>Qurio: Transparansi Kemampuan Intelektual Murid</span>
             <span>Tanpa Download Aplikasi &amp; Tanpa Login Siswa</span>
-            <b className="text-sky-500 text-lg">⚡</b>
             <span>Analisis Pemahaman Berbasis AI Real-Time</span>
-            <b className="text-sky-500 text-lg">✦</b>
             <span>
               Kuis Interaktif, Word Cloud &amp; Q&amp;A dalam Satu Tempat
             </span>
-            <b className="text-sky-500 text-lg">⚡</b>
             <span>WebSocket Super Cepat (0.1s Response)</span>
           </div>
 
           <div
-            className="flex items-center gap-7 px-7 py-[17px] whitespace-nowrap text-brand-text-dark text-base font-bold"
+            className="flex items-center gap-7 px-7 py-[17px] whitespace-nowrap text-brand-text-dark text-xl font-bold"
             aria-hidden="true"
           >
-            <span>⚡ Qurio: Transparansi Kemampuan Intelektual Murid</span>
-            <b className="text-sky-500 text-lg">✦</b>
+            <span>Qurio: Transparansi Kemampuan Intelektual Murid</span>
             <span>Tanpa Download Aplikasi &amp; Tanpa Login Siswa</span>
-            <b className="text-sky-500 text-lg">⚡</b>
             <span>Analisis Pemahaman Berbasis AI Real-Time</span>
-            <b className="text-sky-500 text-lg">✦</b>
             <span>
               Kuis Interaktif, Word Cloud &amp; Q&amp;A dalam Satu Tempat
             </span>
-            <b className="text-sky-500 text-lg">⚡</b>
             <span>WebSocket Super Cepat (0.1s Response)</span>
           </div>
         </div>
@@ -274,17 +274,20 @@ export default function App() {
           {/* Responsif: 1 kolom di <620px, 2 kolom di 621-900px, 4 kolom di >900px */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {featureCards.map(([icon, title, copy]) => (
-              <article
-                className="p-7 min-h-68 border border-[#e5ebf3] rounded-6 bg-[#f8fafc] shadow-[0_14px_28px_rgba(30,44,70,0.07)]"
-                key={title}
-              >
-                <span className="grid place-items-center w-16 h-16 mb-9 rounded-[15px] bg-white text-brand-purple shadow-[0_5px_12px_#e8edf4] text-[27px]">
-                  {icon}
-                </span>
-                <h3 className="mt-0 text-[23px] mb-5">{title}</h3>
-                <p className="mt-0 text-[#50627d] leading-[1.6] text-4">
-                  {copy}
-                </p>
+              <article key={title}>
+                <Card className="p-7 min-h-68 border border-[#e5ebf3] bg-[#f8fafc] shadow-[0_14px_28px_rgba(30,44,70,0.07)]">
+                  <span className="grid place-items-center w-16 h-16 mb-5 rounded-[15px] bg-white text-brand-purple shadow-[0_5px_12px_#e8edf4] text-[27px]">
+                    {icon}
+                  </span>
+                  <CardHeader>
+                    <CardTitle className="mt-0 text-[23px] mb-5">
+                      {title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="mt-0 text-[#50627d] leading-[1.6] text-4">
+                    {copy}
+                  </CardContent>
+                </Card>
               </article>
             ))}
           </div>
@@ -304,102 +307,107 @@ export default function App() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <article className="p-7 border border-[#e5ebf3] rounded-6 bg-white shadow-[0_14px_28px_rgba(30,44,70,0.07)]">
+            <Card className="p-7 border border-[#e5ebf3] bg-white shadow-[0_14px_28px_rgba(30,44,70,0.07)]">
               <span className="block mb-5 text-brand-purple text-[11px] font-extrabold tracking-[0.12em]">
                 01
               </span>
-              <h3 className="mt-0 mb-3 text-[22px]">Word Cloud</h3>
-              <p className="mt-0 min-h-13 text-[#50627d] leading-normal text-[15px]">
-                Curah pendapat live yang memetakan kata dan pola pikir kelas.
-              </p>
-              <div className="flex min-h-36 flex-wrap items-center justify-center gap-x-3 gap-y-2 py-4">
-                <b className="text-brand-purple text-[34px]">Konsep</b>
-                <em className="text-[#7c88ef] text-[26px] not-italic">Seru</em>
-                <strong className="text-[12b886] text-[18px]">
-                  Eksperimen
-                </strong>
-                <span className="text-[#91a3bd] text-[15px]">Berani</span>
-                <i className="text-[#2aca96] text-[20px] not-italic">Ide</i>
-                <small className="text-[#c4cede]">Diskusi</small>
-              </div>
-            </article>
-            <article className="p-7 border border-[#e5ebf3] rounded-6 bg-white shadow-[0_14px_28px_rgba(30,44,70,0.07)]">
+              <CardContent>
+                <h3 className="mt-0 mb-3 text-[22px]">Word Cloud</h3>
+                <p className="mt-0 min-h-13 text-[#50627d] leading-normal text-[15px]">
+                  Curah pendapat live yang memetakan kata dan pola pikir kelas.
+                </p>
+                <div className="flex min-h-36 flex-wrap items-center justify-center gap-x-3 gap-y-2 py-4">
+                  <b className="text-brand-purple text-[34px]">Konsep</b>
+                  <em className="text-[#7c88ef] text-[26px] not-italic">
+                    Seru
+                  </em>
+                  <strong className="text-[12b886] text-[18px]">
+                    Eksperimen
+                  </strong>
+                  <span className="text-[#91a3bd] text-[15px]">Berani</span>
+                  <i className="text-[#2aca96] text-[20px] not-italic">Ide</i>
+                  <small className="text-[#c4cede]">Diskusi</small>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="p-7 border border-[#e5ebf3] bg-white shadow-[0_14px_28px_rgba(30,44,70,0.07)]">
               <span className="block mb-[19px] text-sky-500 text-[11px] font-extrabold tracking-[0.12em]">
                 02
               </span>
-              <h3 className="mt-0 mb-[10px] text-[22px]">
-                Tanya Jawab (Q&amp;A)
-              </h3>
-              <p className="mt-0 min-h-13 text-[#50627d] leading-[1.5] text-[15px]">
-                Papan diskusi termoderasi agar semua pertanyaan terdengar.
-              </p>
-
-              {/* Pertanyaan 1 */}
-              <div className="flex gap-4 mt-[15px] p-4 border-2 border-[#edf1f6] rounded-[15px] text-[#40516b] font-bold items-center">
-                <span className="grid place-items-center flex-none w-10 h-10 rounded-full text-brand-purple bg-[#dfe4ff] font-extrabold">
-                  AJ
-                </span>
-                <div>
-                  <b className="text-[#253149] text-[11px] block mb-[5px]">
-                    Bisakah dijelaskan lagi?
-                  </b>
-                  <small className="text-[#9aa9bd] text-[9px] block">
-                    18 upvote · Direkomendasikan AI
-                  </small>
+              <CardContent>
+                <h3 className="mt-0 mb-[10px] text-[22px]">
+                  Tanya Jawab (Q&amp;A)
+                </h3>
+                <p className="mt-0 min-h-13 text-[#50627d] leading-[1.5] text-[15px]">
+                  Papan diskusi termoderasi agar semua pertanyaan terdengar.
+                </p>
+                {/* Pertanyaan 1 */}
+                <div className="flex gap-4 mt-[15px] p-4 border-2 border-[#edf1f6] rounded-[15px] text-[#40516b] font-bold items-center">
+                  <span className="grid place-items-center flex-none w-10 h-10 rounded-full text-brand-purple bg-[#dfe4ff] font-extrabold">
+                    AJ
+                  </span>
+                  <div>
+                    <b className="text-[#253149] text-[11px] block mb-[5px]">
+                      Bisakah dijelaskan lagi?
+                    </b>
+                    <small className="text-[#9aa9bd] text-[9px] block">
+                      18 upvote · Direkomendasikan AI
+                    </small>
+                  </div>
                 </div>
-              </div>
-
-              {/* Pertanyaan 2 */}
-              <div className="flex gap-4 mt-[15px] p-4 border-2 border-[#edf1f6] rounded-[15px] text-[#40516b] font-bold items-center">
-                <span className="grid place-items-center flex-none w-10 h-10 rounded-full text-[#079d70] bg-[#dffbef] font-extrabold">
-                  RN
-                </span>
-                <div>
-                  <b className="text-[#253149] text-[11px] block mb-[5px]">
-                    Contoh di kehidupan nyata?
-                  </b>
-                  <small className="text-[#9aa9bd] text-[9px] block">
-                    9 upvote · Menunggu moderasi
-                  </small>
+                {/* Pertanyaan 2 */}
+                <div className="flex gap-4 mt-[15px] p-4 border-2 border-[#edf1f6] rounded-[15px] text-[#40516b] font-bold items-center">
+                  <span className="grid place-items-center flex-none w-10 h-10 rounded-full text-[#079d70] bg-[#dffbef] font-extrabold">
+                    RN
+                  </span>
+                  <div>
+                    <b className="text-[#253149] text-[11px] block mb-[5px]">
+                      Contoh di kehidupan nyata?
+                    </b>
+                    <small className="text-[#9aa9bd] text-[9px] block">
+                      9 upvote · Menunggu moderasi
+                    </small>
+                  </div>
                 </div>
-              </div>
-            </article>
-            <article className="p-7 border border-slate-200 rounded-3xl bg-white shadow-lg">
+              </CardContent>
+            </Card>
+            <Card className="p-7 border border-slate-200 bg-white shadow-lg">
               <span className="block mb-5 text-blue-600 text-xs font-extrabold tracking-widest">
                 03
               </span>
-              <h3 className="mt-0 mb-2.5 text-2xl">Kuis (Quiz)</h3>
-              <p className="mt-0 min-h-13 text-slate-600 leading-normal text-[15px]">
-                Evaluasi kognitif interaktif dengan leaderboard instan.
-              </p>
-
-              <div className="p-3.5 rounded-xl bg-slate-50">
-                {/* <span className="block w-max mx-auto mb-3 px-2 py-1 rounded-lg bg-orange-50 text-orange-500 text-xs font-extrabold">
+              <CardContent>
+                <h3 className="mt-0 mb-2.5 text-2xl">Kuis (Quiz)</h3>
+                <p className="mt-0 min-h-13 text-slate-600 leading-normal text-[15px]">
+                  Evaluasi kognitif interaktif dengan leaderboard instan.
+                </p>
+                <div className="p-3.5 rounded-xl bg-slate-50">
+                  {/* <span className="block w-max mx-auto mb-3 px-2 py-1 rounded-lg bg-orange-50 text-orange-500 text-xs font-extrabold">
                   00:18
                 </span> */}
 
-                <b className="block mb-2.5 text-slate-800 text-sm">
-                  Planet Merah?
-                </b>
+                  <b className="block mb-2.5 text-slate-800 text-sm">
+                    Planet Merah?
+                  </b>
 
-                <div className="flex items-center gap-2 mt-2 p-2 border border-slate-200 rounded-lg text-slate-600 text-xs">
-                  <i className="grid place-items-center w-6 h-6 rounded-md bg-slate-100 text-slate-500 not-italic font-extrabold">
-                    A
-                  </i>
-                  <span>Venus</span>
-                </div>
+                  <div className="flex items-center gap-2 mt-2 p-2 border border-slate-200 rounded-lg text-slate-600 text-xs">
+                    <i className="grid place-items-center w-6 h-6 rounded-md bg-slate-100 text-slate-500 not-italic font-extrabold">
+                      A
+                    </i>
+                    <span>Venus</span>
+                  </div>
 
-                <div className="flex items-center gap-2 mt-2 p-2 border border-blue-600 rounded-lg text-blue-600 bg-blue-50 text-xs">
-                  <i className="grid place-items-center w-6 h-6 rounded-md bg-blue-600 text-white not-italic font-extrabold">
-                    B
-                  </i>
-                  <span>Mars</span>
-                  <strong className="ml-auto text-sky-500 text-[10px]">
-                    #1
-                  </strong>
+                  <div className="flex items-center gap-2 mt-2 p-2 border border-blue-600 rounded-lg text-blue-600 bg-blue-50 text-xs">
+                    <i className="grid place-items-center w-6 h-6 rounded-md bg-blue-600 text-white not-italic font-extrabold">
+                      B
+                    </i>
+                    <span>Mars</span>
+                    <strong className="ml-auto text-sky-500 text-[10px]">
+                      #1
+                    </strong>
+                  </div>
                 </div>
-              </div>
-            </article>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -442,40 +450,52 @@ export default function App() {
           </div>
 
           {/* Grid: 1 kolom di mobile, 3 kolom di md (768px). Gap 48px = gap-12 */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              [
-                "1",
-                "Guru Membuat Sesi",
-                "Siapkan pertanyaan dan pilih mode interaksi.",
-              ],
-              [
-                "2",
-                "Siswa Memasukkan Kode",
-                "Siswa bergabung dengan 6 digit kode tanpa login.",
-              ],
-              [
-                "3",
-                "AI Membaca Pola",
-                "Lihat insight, rekomendasi, dan hasil secara instan.",
-              ],
-            ].map(([num, title, copy]) => (
-              <article
-                className="relative py-10 px-[34px] text-center border border-[#e5ebf3] rounded-7 bg-white shadow-[0_14px_28px_rgba(30,44,70,0.07)] after:content-[''] after:absolute after:top-1/2 after:left-full after:w-12 after:border-t-2 after:border-blue-200 after:hidden md:after:block"
-                key={num}
-              >
-                <span
-                  className={cn(
-                    "grid place-items-center w-16 h-16 mx-auto mb-[30px] rounded-[17px] bg-primary text-white text-2xl font-extrabold shadow-[0_10px_17px_rgba(37,99,235,0.24)]",
-                    num === "2" && "bg-sky-500",
-                  )}
+          <div className="relative flex flex-col">
+            {/* Garis dari tengah card pertama ke tengah card terakhir */}
+            <div
+              className="pointer-events-none absolute top-1/2 z-0 hidden h-0.5 bg-blue-200 md:block"
+              style={{
+                left: "calc((100% - 6rem) / 6)",
+                right: "calc((100% - 6rem) / 6)",
+              }}
+            />
+
+            <div className="w-full relative z-10 grid grid-cols-1 gap-12 justify-items-center md:grid-cols-3 md:justify-items-start">
+              {[
+                [
+                  "1",
+                  "Guru Membuat Sesi",
+                  "Siapkan pertanyaan dan pilih mode interaksi.",
+                ],
+                [
+                  "2",
+                  "Siswa Memasukkan Kode",
+                  "Siswa bergabung dengan 6 digit kode tanpa login.",
+                ],
+                [
+                  "3",
+                  "AI Membaca Pola",
+                  "Lihat insight, rekomendasi, dan hasil secara instan.",
+                ],
+              ].map(([num, title, copy]) => (
+                <Card
+                  key={num}
+                  className="w-full max-w-prose relative rounded-7 px-8.5 py-10 text-center shadow-[0_14px_28px_rgba(30,44,70,0.07)]"
                 >
-                  {num}
-                </span>
-                <h3 className="mt-0 text-[19px]">{title}</h3>
-                <p className="mt-0 text-[#536682] leading-normal">{copy}</p>
-              </article>
-            ))}
+                  {/* isi card */}
+                  <span
+                    className={cn(
+                      "grid place-items-center w-16 h-16 mx-auto mb-[30px] rounded-[17px] bg-primary text-white text-2xl font-extrabold shadow-[0_10px_17px_rgba(37,99,235,0.24)]",
+                      num === "2" && "bg-sky-500",
+                    )}
+                  >
+                    {num}
+                  </span>
+                  <h3 className="mt-0 text-[19px]">{title}</h3>
+                  <p className="mt-0 text-[#536682] leading-normal">{copy}</p>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
